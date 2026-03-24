@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TentCo - Premium Camping Tents</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">TentCo</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Adventure Awaits</h1>
+            <p class="hero-subtitle">Premium camping tents for explorers and nature lovers</p>
+            <button class="cta-button" onclick="scrollToSection('products')">Explore Our Tents</button>
+        </div>
+        <div class="hero-image">
+            <div class="tent-illustration"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2>Our Collection</h2>
+        <p class="section-subtitle">Choose the perfect tent for your next adventure</p>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-illustration dome"></div>
+                </div>
+                <h3>Dome Explorer</h3>
+                <p class="price">$299</p>
+                <p class="product-desc">Perfect for beginners. Easy setup, weather-resistant.</p>
+                <ul class="features">
+                    <li>Capacity: 2-3 persons</li>
+                    <li>Weight: 2.5 kg</li>
+                    <li>Season: Spring-Fall</li>
+                </ul>
+                <button class="product-button">View Details</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-illustration tunnel"></div>
+                </div>
+                <h3>Tunnel Expedition</h3>
+                <p class="price">$499</p>
+                <p class="product-desc">Spacious and stable. Built for serious adventurers.</p>
+                <ul class="features">
+                    <li>Capacity: 4-5 persons</li>
+                    <li>Weight: 4.2 kg</li>
+                    <li>Season: Year-round</li>
+                </ul>
+                <button class="product-button">View Details</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-illustration geodesic"></div>
+                </div>
+                <h3>Geodesic Pro</h3>
+                <p class="price">$799</p>
+                <p class="product-desc">Ultimate protection. Designed for extreme conditions.</p>
+                <ul class="features">
+                    <li>Capacity: 4-6 persons</li>
+                    <li>Weight: 5.8 kg</li>
+                    <li>Season: All-season</li>
+                </ul>
+                <button class="product-button">View Details</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-illustration bell"></div>
+                </div>
+                <h3>Bell Glamping</h3>
+                <p class="price">$1,299</p>
+                <p class="product-desc">Luxury camping experience with style and comfort.</p>
+                <ul class="features">
+                    <li>Capacity: 6-8 persons</li>
+                    <li>Weight: 8.5 kg</li>
+                    <li>Season: Spring-Fall</li>
+                </ul>
+                <button class="product-button">View Details</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-illustration cabin"></div>
+                </div>
+                <h3>Cabin Base</h3>
+                <p class="price">$899</p>
+                <p class="product-desc">Vertical walls for maximum headroom and storage.</p>
+                <ul class="features">
+                    <li>Capacity: 5-6 persons</li>
+                    <li>Weight: 6.1 kg</li>
+                    <li>Season: Spring-Fall</li>
+                </ul>
+                <button class="product-button">View Details</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-illustration ultralight"></div>
+                </div>
+                <h3>Ultralight Solo</h3>
+                <p class="price">$199</p>
+                <p class="product-desc">Minimal and lightweight. Perfect for backpacking.</p>
+                <ul class="features">
+                    <li>Capacity: 1-2 persons</li>
+                    <li>Weight: 1.2 kg</li>
+                    <li>Season: Spring-Fall</li>
+                </ul>
+                <button class="product-button">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>Who We Are</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2015, TentCo started with a simple mission: create high-quality, affordable camping tents that inspire people to explore the great outdoors.</p>
+                    <p>Our team of experienced designers and outdoor enthusiasts work tirelessly to innovate and perfect every tent we produce. We believe that everyone deserves access to reliable gear that won't break the bank.</p>
+                    
+                    <h3>Our Values</h3>
+                    <div class="values-list">
+                        <div class="value-item">
+                            <span class="value-icon">🌍</span>
+                            <div>
+                                <h4>Sustainability</h4>
+                                <p>Eco-friendly materials and ethical manufacturing</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">⚙️</span>
+                            <div>
+                                <h4>Quality</h4>
+                                <p>Rigorous testing and premium craftsmanship</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">💚</span>
+                            <div>
+                                <h4>Community</h4>
+                                <p>Supporting outdoor education and conservation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Happy Campers</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Years in Business</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Countries Served</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Customer Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <p class="section-subtitle">Have questions? We'd love to hear from you!</p>
+        
+        <div class="contact-container">
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="info-block">
+                    <h4>📍 Address</h4>
+                    <p>123 Mountain Trail<br>Boulder, CO 80301</p>
+                </div>
+                <div class="info-block">
+                    <h4>📞 Phone</h4>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="info-block">
+                    <h4>✉️ Email</h4>
+                    <p>hello@tentco.com</p>
+                </div>
+                <div class="info-block">
+                    <h4>🕐 Hours</h4>
+                    <p>Mon-Fri: 9am-6pm<br>Sat-Sun: 10am-4pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TentCo</h4>
+                <p>Your trusted partner in outdoor adventures</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TentCo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
