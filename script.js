@@ -1,48 +1,33 @@
-// Smooth scrolling and navigation
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
 
-// Hamburger menu toggle
 hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
-// Smooth scroll to sections
+// Close menu when nav link is clicked
 navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
         navMenu.classList.remove('active');
-        
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-        
-        // Update active nav link
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
     });
 });
 
-// Scroll spy for navigation
+// Smooth Scroll & Scroll Spy
 window.addEventListener('scroll', () => {
-    let current = '';
     const sections = document.querySelectorAll('section');
-    
+    let current = '';
+
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop - 200) {
+        const sectionTop = section.offsetTop - 200;
+        if (pageYOffset >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').slice(1) === current) {
@@ -51,100 +36,79 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Scroll to section function
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
-// Product button interactions
-const productButtons = document.querySelectorAll('.product-button');
-productButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const card = button.closest('.product-card');
-        const productName = card.querySelector('h3').textContent;
-        
-        // Add ripple effect
-        const ripple = document.createElement('span');
-        ripple.style.position = 'absolute';
-        ripple.style.width = '20px';
-        ripple.style.height = '20px';
-        ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-        ripple.style.borderRadius = '50%';
-        ripple.style.pointerEvents = 'none';
-        ripple.style.animation = 'ripple 0.6s ease-out';
-        
-        // Show alert (in real app, would navigate to product page)
-        alert(`Product: ${productName}\n\nIn a full implementation, this would navigate to the detailed product page.`);
-    });
-});
-
-// Contact form submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        const formData = {};
-        
-        inputs.forEach(input => {
-            formData[input.name || input.id] = input.value;
-        });
-        
-        console.log('Form submitted:', formData);
-        
-        // Show success message
-        const button = contactForm.querySelector('button');
-        const originalText = button.textContent;
-        button.textContent = '✓ Message Sent!';
-        button.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Restore button after 3 seconds
-        setTimeout(() => {
-            button.textContent = originalText;
-        }, 3000);
-    });
-}
-
-// Add scroll animation for elements
+// Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.product-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
+document.querySelectorAll('.product-card, .feature').forEach(el => {
+    observer.observe(el);
 });
 
-// Prevent default form behavior for demo
-document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', (e) => {
-        if (form.classList.contains('contact-form')) {
-            // Allow contact form to proceed
-            return;
-        }
-        e.preventDefault();
+// Add to Cart Button Feedback
+const cartButtons = document.querySelectorAll('.add-to-cart');
+
+cartButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const originalText = button.textContent;
+        button.textContent = '✓ Added to Cart';
+        button.style.background = 'var(--secondary-color)';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = '';
+        }, 2000);
     });
 });
+
+// Contact Form Handling
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(contactForm);
+    const name = contactForm.querySelector('input[type="text"]').value;
+    const email = contactForm.querySelector('input[type="email"]').value;
+    const message = contactForm.querySelector('textarea').value;
+    
+    console.log('Contact Form Submission:', {
+        name,
+        email,
+        message,
+        timestamp: new Date().toLocaleString()
+    });
+    
+    // Visual feedback
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = '✓ Message Sent!';
+    submitBtn.style.opacity = '0.7';
+    
+    contactForm.reset();
+    
+    setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.opacity = '1';
+    }, 3000);
+});
+
+// Page Load Animation
+window.addEventListener('load', () => {
+    document.body.style.animation = 'fadeIn 0.8s ease-out';
+});
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
